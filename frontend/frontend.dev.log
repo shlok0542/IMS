@@ -20,3 +20,154 @@
 [2m11:00:07 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/@fs/D:/Full Stack Projects/inventory-management/frontend/src/App.jsx, /@fs/D:/Full Stack Projects/inventory-management/frontend/src/index.css[22m
 [2m11:01:06 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/@fs/D:/Full Stack Projects/inventory-management/frontend/src/pages/Login.jsx, /@fs/D:/Full Stack Projects/inventory-management/frontend/src/index.css[22m
 [2m11:01:29 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/@fs/D:/Full Stack Projects/inventory-management/frontend/src/components/Navbar.jsx, /@fs/D:/Full Stack Projects/inventory-management/frontend/src/index.css[22m
+[2m12:17:53 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m12:17:53 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+Re-optimizing dependencies because vite config has changed
+[2m12:17:53 AM[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:17:55 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:17:55 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:17:55 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:17:58 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:17:58 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:17:58 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:17:59 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found ":"
+
+    vite.config.js:7:8:
+      7 │   server: {
+        │         ^
+        ╵         }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:17:59 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:8: ERROR: Expected "}" but found ":"
+[2m12:17:59 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:01 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found ":"
+
+    vite.config.js:7:8:
+      7 │   server: {
+        │         ^
+        ╵         }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:01 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:8: ERROR: Expected "}" but found ":"
+[2m12:18:01 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:03 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:03 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:03 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:05 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:05 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:05 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:08 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found ":"
+
+    vite.config.js:7:8:
+      7 │   server: {
+        │         ^
+        ╵         }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:08 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:8: ERROR: Expected "}" but found ":"
+[2m12:18:08 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:15 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:15 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:15 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:16 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:16 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:16 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:22 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:22 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:22 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:25 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m12:18:25 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:25 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:25 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:38 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+X [ERROR] Expected "}" but found "server"
+
+    vite.config.js:7:2:
+      7 │   server: {
+        │   ~~~~~~
+        ╵   }
+
+[31mfailed to load config from d:\Full Stack Projects\inventory-management\frontend\vite.config.js[39m
+[2m12:18:38 AM[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.js:7:2: ERROR: Expected "}" but found "server"
+[2m12:18:38 AM[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:18:40 AM[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m12:18:41 AM[22m [36m[1m[vite][22m[39m server restarted.

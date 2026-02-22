@@ -432,3 +432,227 @@ Server running on port 5000
 [0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 229.067 ms - -[0m
 [0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 123.473 ms - -[0m
 [0mGET /api/auth/profile [36m304[0m 139.753 ms - -[0m
+[0mGET /api/auth/profile [33m401[0m 1.649 ms - 28[0m
+[0mPOST /api/auth/forgot-password [32m200[0m 85.594 ms - 68[0m
+[0mPOST /api/auth/login [32m200[0m 267.897 ms - 338[0m
+[0mGET /api/dashboard/summary [32m200[0m 161.615 ms - 655[0m
+[0mGET /api/dashboard/summary [36m304[0m 129.361 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 130.965 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 133.770 ms - -[0m
+[0mGET /api/products/699b38795e81ffa908b3856b [36m304[0m 143.873 ms - -[0m
+[0mGET /api/products/699b38795e81ffa908b3856b [36m304[0m 161.443 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 136.464 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 121.829 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 128.755 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 149.827 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [32m200[0m 143.321 ms - 563[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 142.851 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 127.242 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 136.032 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 122.596 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 116.391 ms - -[0m
+[0mGET /api/purchases?page=1&limit=10 [36m304[0m 130.705 ms - -[0m
+[0mGET /api/products?page=1&limit=100 [32m200[0m 133.065 ms - 563[0m
+[0mGET /api/purchases?page=1&limit=10 [36m304[0m 196.446 ms - -[0m
+[0mGET /api/products?page=1&limit=100 [36m304[0m 199.100 ms - -[0m
+[0mPOST /api/purchases [32m201[0m 687.765 ms - 424[0m
+[0mGET /api/purchases?page=1&limit=10 [32m200[0m 198.600 ms - 495[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 129.650 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 114.479 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 132.616 ms - 562[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 126.846 ms - -[0m
+[0mGET /api/dashboard/summary [32m200[0m 131.085 ms - 655[0m
+[0mGET /api/dashboard/summary [36m304[0m 142.102 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 132.879 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 126.310 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 139.236 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 155.066 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 143.310 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 141.508 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 125.601 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 131.036 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 139.605 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 144.404 ms - -[0m
+[0mGET /api/products/699b38795e81ffa908b3856b [32m200[0m 145.683 ms - 491[0m
+[0mGET /api/products/699b38795e81ffa908b3856b [36m304[0m 121.488 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 126.240 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 140.221 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [32m200[0m 149.177 ms - 563[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 126.059 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 123.388 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 153.697 ms - -[0m
+[0mPOST /api/products [32m201[0m 559.561 ms - 441[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 149.008 ms - 1004[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 115.358 ms - -[0m
+[0mGET /api/products/699b3ed464e06da1b5e7ecee [32m200[0m 140.177 ms - 441[0m
+[0mGET /api/products/699b3ed464e06da1b5e7ecee [36m304[0m 114.270 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 121.728 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 127.795 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [32m200[0m 138.300 ms - 1005[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 179.350 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 138.290 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 129.032 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 132.136 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 116.573 ms - -[0m
+[0mPOST /api/orders [33m400[0m 126.776 ms - 60[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 157.802 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 139.958 ms - -[0m
+[0mGET /api/dashboard/summary [32m200[0m 136.536 ms - 1097[0m
+[0mGET /api/dashboard/summary [36m304[0m 124.779 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 143.795 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 159.803 ms - -[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+MongoDB connected
+Server running on port 5000
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 199.332 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 206.882 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 129.414 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 131.013 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 143.715 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 147.207 ms - -[0m
+[0mDELETE /api/products/699b38795e81ffa908b3856b [32m200[0m 145.089 ms - 29[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 117.954 ms - 512[0m
+[0mDELETE /api/products/699b3ed464e06da1b5e7ecee [32m200[0m 140.615 ms - 29[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 165.713 ms - 71[0m
+[0mPOST /api/auth/login [32m200[0m 243.379 ms - 338[0m
+[0mGET /api/dashboard/summary [32m200[0m 153.357 ms - 164[0m
+[0mGET /api/dashboard/summary [36m304[0m 145.143 ms - -[0m
+[0mPOST /api/products [32m201[0m 733.465 ms - 429[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 146.955 ms - 500[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 123.508 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 137.817 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 193.754 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 113.850 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 119.218 ms - -[0m
+[0mDELETE /api/products/699b40edce627638384f5a78 [32m200[0m 147.950 ms - 29[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 140.436 ms - 71[0m
+[0mPOST /api/products [32m201[0m 559.245 ms - 421[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 125.779 ms - 492[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 133.063 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 132.676 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 172.693 ms - -[0m
+[0mGET /api/dashboard/summary [32m200[0m 148.413 ms - 585[0m
+[0mGET /api/dashboard/summary [36m304[0m 121.398 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [32m200[0m 132.047 ms - 493[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 148.356 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 153.130 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 123.589 ms - -[0m
+[0mPOST /api/auth/login [32m200[0m 239.758 ms - 338[0m
+[0mGET /api/dashboard/summary [36m304[0m 141.002 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 124.373 ms - -[0m
+Password reset link for monumaury0542a376@gmail.com: http://localhost:5173/reset-password/9849ed3f0f960f2815d3a116f3f036c0026aa30625c09604a5479fa1602b37ca
+[0mPOST /api/auth/forgot-password [32m200[0m 158.799 ms - 68[0m
+Password reset link for monumaury0542a376@gmail.com: http://localhost:5173/reset-password/9e9852265e61d06cc516bd90fa0e373452d39fc1d6596908d985c58e6c05c6d9
+[0mPOST /api/auth/forgot-password [32m200[0m 141.180 ms - 68[0m
+[0mPOST /api/auth/login [32m200[0m 202.115 ms - 338[0m
+[0mGET /api/dashboard/summary [36m304[0m 120.173 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 122.336 ms - -[0m
+[0mPUT /api/auth/update-profile [32m200[0m 491.328 ms - 379[0m
+[0mPOST /api/auth/login [32m200[0m 222.096 ms - 338[0m
+[0mGET /api/dashboard/summary [36m304[0m 131.382 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 131.115 ms - -[0m
+[0mPOST /api/auth/login [33m401[0m 245.115 ms - 33[0m
+[0mPOST /api/auth/login [32m200[0m 304.514 ms - 338[0m
+[0mGET /api/dashboard/summary [36m304[0m 133.078 ms - -[0m
+[0mGET /api/dashboard/summary [36m304[0m 135.791 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 146.245 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 113.275 ms - -[0m
+[0mDELETE /api/products/699b43a6ce627638384f5a97 [32m200[0m 168.559 ms - 29[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 219.221 ms - 71[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 150.247 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 144.420 ms - -[0m
+[0mGET /api/products?page=1&limit=100 [32m200[0m 132.670 ms - 72[0m
+[0mGET /api/purchases?page=1&limit=10 [36m304[0m 227.333 ms - -[0m
+[0mGET /api/products?page=1&limit=100 [36m304[0m 132.725 ms - -[0m
+[0mGET /api/purchases?page=1&limit=10 [36m304[0m 244.523 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [32m200[0m 145.091 ms - 72[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [32m200[0m 197.722 ms - 1672[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 132.279 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 187.439 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 125.973 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 115.493 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 194.629 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 107.306 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 120.621 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 177.385 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 126.524 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 183.100 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 126.893 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 202.423 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [32m200[0m 143.738 ms - 72[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 135.428 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 124.956 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 192.384 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 140.554 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 181.847 ms - -[0m
+[0mGET /api/reports/daily-sales [36m304[0m 112.604 ms - -[0m
+[0mGET /api/reports/daily-sales [36m304[0m 102.973 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 124.407 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 127.188 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 131.522 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 120.775 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 136.596 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 125.323 ms - -[0m
+[0mPOST /api/products [32m201[0m 578.924 ms - 430[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 138.701 ms - 501[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 135.605 ms - -[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+MongoDB connected
+Server running on port 5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+file:///d:/Full%20Stack%20Projects/inventory-management/backend/controllers/productController.js:2
+import Product from "../models/Product.js";`r`nimport StockTransaction from "../models/StockTransaction.js";`r`nimport Supplier from "../models/Supplier.js";
+                                              ^^^^^^^
+
+SyntaxError: Unexpected identifier 'nimport'
+    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+    at #translate (node:internal/modules/esm/loader:437:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)
+
+Node.js v22.12.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+MongoDB connected
+Server running on port 5000
+[0mPOST /api/auth/login [32m200[0m 342.723 ms - 338[0m
+[0mGET /api/dashboard/summary [32m200[0m 172.029 ms - 594[0m
+[0mGET /api/dashboard/summary [36m304[0m 145.518 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 166.729 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 138.755 ms - -[0m
+[0mDELETE /api/products/699b4882ce627638384f5b7a [32m200[0m 203.762 ms - 41[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 134.493 ms - 71[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 170.984 ms - -[0m
+[0mGET /api/orders?page=1&limit=10 [36m304[0m 121.338 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 147.606 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 141.069 ms - -[0m
+[0mPOST /api/products [32m201[0m 552.771 ms - 421[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 128.984 ms - 492[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 151.953 ms - -[0m
+[0mDELETE /api/products/699b4a7f94724c578891db30 [32m200[0m 185.841 ms - 41[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [32m200[0m 125.884 ms - 71[0m
+[0mGET /api/auth/profile [36m304[0m 107.326 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 153.076 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 122.392 ms - -[0m
+[0mGET /api/products?page=1&limit=10&sortBy=updatedAt:desc [36m304[0m 124.824 ms - -[0m
+[0mGET /api/products?page=1&limit=100 [36m304[0m 141.189 ms - -[0m
+[0mGET /api/purchases?page=1&limit=10 [36m304[0m 208.375 ms - -[0m
+[0mGET /api/products?page=1&limit=100 [36m304[0m 121.411 ms - -[0m
+[0mGET /api/purchases?page=1&limit=10 [36m304[0m 188.849 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 142.316 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 190.233 ms - -[0m
+[0mGET /api/products?page=1&limit=100&sortBy=name:asc [36m304[0m 119.356 ms - -[0m
+[0mGET /api/stock-transactions?page=1&limit=50&sortBy=date:desc [36m304[0m 189.187 ms - -[0m
+[0mGET /api/reports/daily-sales [36m304[0m 123.968 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 139.989 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 123.336 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 127.936 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 175.150 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 128.938 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 122.774 ms - -[0m
