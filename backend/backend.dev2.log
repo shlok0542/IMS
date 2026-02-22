@@ -656,3 +656,10 @@ Server running on port 5000
 [0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 175.150 ms - -[0m
 [0mGET /api/auth/profile [36m304[0m 128.938 ms - -[0m
 [0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 122.774 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 222.200 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 158.902 ms - -[0m
+[0mGET /api/products?page=1&limit=100&lowStock=true&sortBy=quantityAvailable:asc [36m304[0m 176.276 ms - -[0m
+[0mGET /api/auth/profile [36m304[0m 177.447 ms - -[0m
+[0mPOST /api/auth/login [32m200[0m 308.596 ms - 338[0m
+[0mGET /api/dashboard/summary [32m200[0m 154.317 ms - 164[0m
+[0mGET /api/dashboard/summary [36m304[0m 129.921 ms - -[0m
