@@ -1,4 +1,5 @@
-﻿import Order from "../models/Order.js";
+import mongoose from "mongoose";
+import Order from "../models/Order.js";
 import Product from "../models/Product.js";
 import StockTransaction from "../models/StockTransaction.js";
 import { sendCsv } from "../utils/csv.js";
@@ -16,12 +17,13 @@ function dateBounds(query, fallbackDays = 30) {
 export async function getDailySalesReport(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
     const { from, to } = dateBounds(req.query, 7);
 
     const rows = await Order.aggregate([
       {
         $match: {
-          userId,
+          userId: userObjectId,
           isDeleted: false,
           status: { $in: ["Pending", "Shipped", "Delivered"] },
           orderDate: { $gte: from, $lte: to }
@@ -52,11 +54,12 @@ export async function getDailySalesReport(req, res, next) {
 export async function getMonthlySalesReport(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
 
     const rows = await Order.aggregate([
       {
         $match: {
-          userId,
+          userId: userObjectId,
           isDeleted: false,
           status: { $in: ["Pending", "Shipped", "Delivered"] }
         }
@@ -86,11 +89,12 @@ export async function getMonthlySalesReport(req, res, next) {
 export async function getPlatformSalesReport(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
 
     const rows = await Order.aggregate([
       {
         $match: {
-          userId,
+          userId: userObjectId,
           isDeleted: false,
           status: { $in: ["Pending", "Shipped", "Delivered"] }
         }
@@ -119,16 +123,17 @@ export async function getPlatformSalesReport(req, res, next) {
 export async function getDeadStockReport(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
     const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
     const soldProductIds = await StockTransaction.distinct("productId", {
-      userId,
+      userId: userObjectId,
       type: "OUT",
       date: { $gte: since }
     });
 
     const rows = await Product.find({
-      userId,
+      userId: userObjectId,
       isDeleted: false,
       _id: { $nin: soldProductIds }
     }).select("name sku category quantityAvailable sellingPrice costPrice updatedAt");
@@ -146,12 +151,13 @@ export async function getDeadStockReport(req, res, next) {
 export async function getFastMovingProductsReport(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
     const { from, to } = dateBounds(req.query, 30);
 
     const rows = await StockTransaction.aggregate([
       {
         $match: {
-          userId,
+          userId: userObjectId,
           type: "OUT",
           date: { $gte: from, $lte: to }
         }
@@ -197,12 +203,13 @@ export async function getFastMovingProductsReport(req, res, next) {
 export async function getProfitReport(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
     const { from, to } = dateBounds(req.query, 30);
 
     const rows = await Order.aggregate([
       {
         $match: {
-          userId,
+          userId: userObjectId,
           isDeleted: false,
           status: { $in: ["Pending", "Shipped", "Delivered"] },
           orderDate: { $gte: from, $lte: to }

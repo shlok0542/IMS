@@ -1,4 +1,5 @@
-﻿import Product from "../models/Product.js";
+import mongoose from "mongoose";
+import Product from "../models/Product.js";
 import Order from "../models/Order.js";
 
 function dateRangeForToday() {
@@ -19,15 +20,16 @@ function dateRangeForMonth() {
 export async function getDashboardSummary(req, res, next) {
   try {
     const userId = req.user.id;
+    const userObjectId = new mongoose.Types.ObjectId(userId);
     const { start: todayStart, end: todayEnd } = dateRangeForToday();
     const { start: monthStart, end: monthEnd } = dateRangeForMonth();
 
     const [products, salesTodayAgg, monthlySalesAgg, platformSales, pendingOrdersCount] = await Promise.all([
-      Product.find({ userId, isDeleted: false }),
+      Product.find({ userId: userObjectId, isDeleted: false }),
       Order.aggregate([
         {
           $match: {
-            userId,
+            userId: userObjectId,
             isDeleted: false,
             status: { $in: ["Pending", "Shipped", "Delivered"] },
             orderDate: { $gte: todayStart, $lt: todayEnd }
@@ -38,7 +40,7 @@ export async function getDashboardSummary(req, res, next) {
       Order.aggregate([
         {
           $match: {
-            userId,
+            userId: userObjectId,
             isDeleted: false,
             status: { $in: ["Pending", "Shipped", "Delivered"] },
             orderDate: { $gte: monthStart, $lt: monthEnd }
@@ -49,7 +51,7 @@ export async function getDashboardSummary(req, res, next) {
       Order.aggregate([
         {
           $match: {
-            userId,
+            userId: userObjectId,
             isDeleted: false,
             status: { $in: ["Pending", "Shipped", "Delivered"] }
           }
@@ -62,7 +64,7 @@ export async function getDashboardSummary(req, res, next) {
           }
         }
       ]),
-      Order.countDocuments({ userId, isDeleted: false, status: "Pending" })
+      Order.countDocuments({ userId: userObjectId, isDeleted: false, status: "Pending" })
     ]);
 
     const totalProducts = products.length;

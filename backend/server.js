@@ -43,7 +43,20 @@ app.use("/api/suppliers", supplierRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+function resolvePort(rawPort) {
+  const parsed = Number(rawPort);
+  if (Number.isInteger(parsed) && parsed > 0) {
+    return parsed;
+  }
+
+  const fallback = process.env.RENDER ? 10000 : 5000;
+  if (rawPort) {
+    console.warn(`Invalid PORT value "${rawPort}". Falling back to ${fallback}.`);
+  }
+  return fallback;
+}
+
+const PORT = resolvePort(process.env.PORT);
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });

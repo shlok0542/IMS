@@ -87,6 +87,7 @@ export async function forgotPassword(req, res, next) {
     }
 
     const user = await User.findOne({ email: email.toLowerCase() });
+    let resetUrl;
 
     if (user) {
       const resetToken = crypto.randomBytes(32).toString("hex");
@@ -97,11 +98,18 @@ export async function forgotPassword(req, res, next) {
       await user.save();
 
       const frontendBase = process.env.FRONTEND_URL || "http://localhost:5173";
-      const resetUrl = `${frontendBase}/reset-password/${resetToken}`;
+      resetUrl = `${frontendBase}/reset-password/${resetToken}`;
       console.log(`Password reset link for ${user.email}: ${resetUrl}`);
     }
 
-    res.json({ message: "If this email exists, a reset link has been generated." });
+    const includeResetUrl =
+      process.env.RETURN_RESET_URL === "true" ||
+      (process.env.NODE_ENV !== "production" && !!resetUrl);
+
+    res.json({
+      message: "If this email exists, a reset link has been generated.",
+      ...(includeResetUrl ? { resetUrl } : {})
+    });
   } catch (err) {
     next(err);
   }

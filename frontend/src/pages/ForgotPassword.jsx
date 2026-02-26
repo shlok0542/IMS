@@ -7,21 +7,38 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [resetUrl, setResetUrl] = useState("");
+  const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
+    setResetUrl("");
+    setCopied(false);
     setLoading(true);
 
     try {
       const data = await forgotPassword({ email });
       setMessage(data.message || "Reset link generated.");
+      if (data.resetUrl) {
+        setResetUrl(data.resetUrl);
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Failed to process request");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(resetUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setCopied(false);
     }
   };
 
@@ -45,6 +62,24 @@ export default function ForgotPassword() {
 
           {message && <p className="text-sm text-emerald-600">{message}</p>}
           {error && <p className="text-sm text-red-600">{error}</p>}
+          {resetUrl && (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-900">
+              <div className="font-medium">Reset link</div>
+              <div className="mt-1 break-all">
+                <a className="text-accent underline" href={resetUrl}>
+                  {resetUrl}
+                </a>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <button type="button" className="btn btn-secondary" onClick={handleCopy}>
+                  {copied ? "Copied" : "Copy link"}
+                </button>
+                <a className="text-accent" href={resetUrl} target="_blank" rel="noreferrer">
+                  Open reset page
+                </a>
+              </div>
+            </div>
+          )}
 
           <button className="btn btn-primary" disabled={loading}>
             {loading ? "Submitting..." : "Send Reset Link"}

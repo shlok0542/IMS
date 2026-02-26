@@ -6,8 +6,41 @@ body {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
+.bg-app {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+}
+
+:root {
+  --app-bg: #f8fafc;
+  --app-text: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --muted-900: #0f172a;
+  --muted-700: #334155;
+  --muted-600: #475569;
+  --muted-500: #64748b;
+  --surface-100: #f1f5f9;
+  --surface-200: #e2e8f0;
+}
+
+.dark {
+  --app-bg: #0f172a;
+  --app-text: #e2e8f0;
+  --card-bg: #111827;
+  --card-border: #1f2937;
+  --muted-900: #e2e8f0;
+  --muted-700: #cbd5f5;
+  --muted-600: #94a3b8;
+  --muted-500: #94a3b8;
+  --surface-100: #1e293b;
+  --surface-200: #334155;
+}
+
 .card {
-  @apply rounded-2xl bg-white shadow-sm border border-slate-200;
+  @apply rounded-2xl shadow-sm border;
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
 }
 
 .btn {
@@ -28,4 +61,68 @@ body {
 
 .label {
   @apply text-sm font-medium text-slate-700;
+}
+
+.dark .btn-primary {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.dark .btn-primary:hover {
+  background-color: #cbd5f5;
+}
+
+.dark .btn-secondary {
+  background-color: var(--surface-100);
+  color: var(--muted-900);
+}
+
+.dark .btn-secondary:hover {
+  background-color: var(--surface-200);
+}
+
+.dark .input {
+  background-color: #0b1220;
+  border-color: #1f2937;
+  color: var(--app-text);
+}
+
+.dark .label {
+  color: var(--muted-600);
+}
+
+.dark .text-slate-600 {
+  color: var(--muted-600);
+}
+
+.dark .text-slate-500 {
+  color: var(--muted-500);
+}
+
+.dark .text-slate-700 {
+  color: var(--muted-700);
+}
+
+.dark .text-ink {
+  color: var(--muted-900);
+}
+
+.dark .bg-white {
+  background-color: var(--card-bg);
+}
+
+.dark .bg-slate-50 {
+  background-color: #0b1220;
+}
+
+.dark .bg-slate-100 {
+  background-color: var(--surface-100);
+}
+
+.dark .bg-slate-200 {
+  background-color: var(--surface-200);
+}
+
+.dark .border-slate-200 {
+  border-color: var(--card-border);
 }
