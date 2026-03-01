@@ -179,6 +179,43 @@ export async function resetPassword(req, res, next) {
   }
 }
 
+export async function recoverPasswordByIdentity(req, res, next) {
+  try {
+    const { email, name, company, password, confirmPassword } = req.body;
+
+    if (!email || !name || !company || !password || !confirmPassword) {
+      return res.status(400).json({ message: "Email, name, company, password, and confirm password are required" });
+    }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
+    const normalizedEmail = email.toLowerCase().trim();
+    const normalizedName = name.trim();
+    const normalizedCompany = company.trim();
+
+    const user = await User.findOne({
+      email: normalizedEmail,
+      name: normalizedName,
+      company: normalizedCompany
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "No account matched the provided details" });
+    }
+
+    user.password = await bcrypt.hash(password, 10);
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    await user.save();
+
+    res.json({ message: "Password reset successful. Please login with your new password." });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function getProfile(req, res, next) {
   try {
     const user = await User.findById(req.user.id).select("_id name email company phone role createdAt");

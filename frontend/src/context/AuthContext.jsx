@@ -79,6 +79,11 @@ export function AuthProvider({ children }) {
     return data;
   };
 
+  const recoverPassword = async (payload) => {
+    const { data } = await api.post("/api/auth/recover-password", payload);
+    return data;
+  };
+
   const updateProfile = async (payload) => {
     setLoading(true);
     try {
@@ -142,6 +147,7 @@ export function AuthProvider({ children }) {
       logout,
       forgotPassword,
       resetPassword,
+      recoverPassword,
       refreshProfile,
       updateProfile,
       deleteAccount

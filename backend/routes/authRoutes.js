@@ -5,6 +5,7 @@ import {
   loginUser,
   forgotPassword,
   resetPassword,
+  recoverPasswordByIdentity,
   getProfile,
   updateProfile,
   deleteAccount
@@ -16,6 +17,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
+router.post("/recover-password", recoverPasswordByIdentity);
 router.get("/profile", protect, getProfile);
 router.put("/update-profile", protect, updateProfile);
 router.delete("/delete-account", protect, deleteAccount);

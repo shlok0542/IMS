@@ -122,6 +122,11 @@ export default function Login() {
               Forgot password?
             </Link>
           </div>
+          <div className="text-sm text-slate-600">
+            <Link className="text-accent" to="/recover-password">
+              Reset not working? Use alternate recovery
+            </Link>
+          </div>
 
           <button className="btn btn-primary" type="submit" disabled={loading}>
             {loading ? (
