@@ -18,10 +18,15 @@ function getStoredUser() {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(getStoredUser);
   const [loading, setLoading] = useState(false);
+  const [initializing, setInitializing] = useState(true);
 
   const refreshProfile = async () => {
     const token = localStorage.getItem("token");
-    if (!token) return null;
+    if (!token) {
+      localStorage.removeItem("user");
+      setUser(null);
+      return null;
+    }
 
     try {
       const { data } = await api.get("/api/auth/profile");
@@ -95,23 +100,51 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
+  const deleteAccount = async (payload) => {
+    setLoading(true);
+    try {
+      const { data } = await api.delete("/api/auth/delete-account", { data: payload });
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setUser(null);
+      return data;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    refreshProfile();
+    let active = true;
+
+    async function bootstrapAuth() {
+      await refreshProfile();
+      if (active) {
+        setInitializing(false);
+      }
+    }
+
+    bootstrapAuth();
+
+    return () => {
+      active = false;
+    };
   }, []);
 
   const value = useMemo(
     () => ({
       user,
       loading,
+      initializing,
       signup,
       login,
       logout,
       forgotPassword,
       resetPassword,
       refreshProfile,
-      updateProfile
+      updateProfile,
+      deleteAccount
     }),
-    [user, loading]
+    [user, loading, initializing]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

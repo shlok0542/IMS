@@ -15,6 +15,7 @@ function formatDate(dateValue) {
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const homePath = user ? "/dashboard" : "/";
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4">
-        <Link to="/" className="text-lg font-bold text-ink dark:text-slate-100">
+        <Link to={homePath} className="text-lg font-bold text-ink dark:text-slate-100">
           CommerceStock
         </Link>
         <button
@@ -77,7 +78,7 @@ export default function Navbar() {
         </button>
 
         <nav className="hidden items-center gap-4 text-sm md:flex">
-          <NavLink to="/" className={navClass}>
+          <NavLink to={homePath} className={navClass}>
             Home
           </NavLink>
 
@@ -172,7 +173,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900">
           <div className="mx-auto grid w-full max-w-7xl gap-2 px-4 py-4 text-sm">
-            <NavLink to="/" className={navClass} onClick={() => setMobileOpen(false)}>
+            <NavLink to={homePath} className={navClass} onClick={() => setMobileOpen(false)}>
               Home
             </NavLink>
 

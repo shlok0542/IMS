@@ -126,3 +126,17 @@ body {
 .dark .border-slate-200 {
   border-color: var(--card-border);
 }
+
+.loading-bar {
+  width: 30%;
+  animation: loading-slide 1.1s ease-in-out infinite;
+}
+
+@keyframes loading-slide {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(420%);
+  }
+}

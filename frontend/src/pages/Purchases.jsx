@@ -35,7 +35,7 @@ export default function Purchases() {
           api.get("/api/products", { params: { page: 1, limit: 100 } }),
           loadPurchases(1)
         ]);
-        setProducts(productRes.data);
+        setProducts(productRes.data || []);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to load data");
       }

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api/axios.js";
 import DeleteModal from "../components/DeleteModal.jsx";
@@ -12,36 +12,39 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
 
-  async function fetchProducts(page = 1, customFilters = filters) {
-    setLoading(true);
-    try {
-      const params = {
-        page,
-        limit: pagination.limit,
-        sortBy: customFilters.sortBy
-      };
-      if (customFilters.search) params.search = customFilters.search;
-      if (customFilters.category) params.category = customFilters.category;
+  const fetchProducts = useCallback(
+    async (page = 1, customFilters = {}) => {
+      setLoading(true);
+      try {
+        const params = {
+          page,
+          limit: pagination.limit,
+          sortBy: customFilters.sortBy || "updatedAt:desc"
+        };
+        if (customFilters.search) params.search = customFilters.search;
+        if (customFilters.category) params.category = customFilters.category;
 
-      const { data } = await api.get("/api/products", { params });
-      setProducts(data.data);
-      setPagination(data.pagination);
-      setError("");
-    } catch (err) {
-      setError(err.response?.data?.message || "Failed to load products");
-    } finally {
-      setLoading(false);
-    }
-  }
+        const { data } = await api.get("/api/products", { params });
+        setProducts(data.data);
+        setPagination(data.pagination);
+        setError("");
+      } catch (err) {
+        setError(err.response?.data?.message || "Failed to load products");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [pagination.limit]
+  );
 
   useEffect(() => {
-    fetchProducts(1);
+    fetchProducts(1, filters);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
-    fetchProducts(1);
+    fetchProducts(1, filters);
   };
 
   const handleDelete = async () => {
@@ -49,7 +52,7 @@ export default function Products() {
     try {
       await api.delete(`/api/products/${deleteItem._id}`);
       setDeleteItem(null);
-      fetchProducts(pagination.page);
+      fetchProducts(pagination.page, filters);
     } catch (err) {
       setError(err.response?.data?.message || "Delete failed");
     }
@@ -94,8 +97,8 @@ export default function Products() {
 
       {error && <div className="card p-4 text-red-600">{error}</div>}
 
-      <div className="card overflow-x-auto">
-        <table className="min-w-full text-sm">
+      <div className="card overflow-x-auto" aria-busy={loading}>
+        <table className="w-full min-w-[900px] text-sm">
           <thead className="bg-slate-100 text-left text-slate-700">
             <tr>
               <th className="px-4 py-3">Name</th>
@@ -121,7 +124,7 @@ export default function Products() {
                 </td>
                 <td className="px-4 py-3">{p.reservedStock}</td>
                 <td className="px-4 py-3">
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <Link className="btn btn-secondary" to={`/products/${p._id}/edit`}>
                       Edit
                     </Link>
@@ -139,26 +142,33 @@ export default function Products() {
                 </td>
               </tr>
             )}
+            {loading && (
+              <tr>
+                <td className="px-4 py-6 text-slate-500" colSpan={8}>
+                  Loading products...
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
 
-      <div className="flex items-center justify-between text-sm text-slate-600">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
         <span>
           Page {pagination.page} of {pagination.totalPages} ({pagination.total} records)
         </span>
         <div className="flex gap-2">
           <button
             className="btn btn-secondary"
-            disabled={pagination.page <= 1}
-            onClick={() => fetchProducts(pagination.page - 1)}
+            disabled={pagination.page <= 1 || loading}
+            onClick={() => fetchProducts(pagination.page - 1, filters)}
           >
             Previous
           </button>
           <button
             className="btn btn-secondary"
-            disabled={pagination.page >= pagination.totalPages}
-            onClick={() => fetchProducts(pagination.page + 1)}
+            disabled={pagination.page >= pagination.totalPages || loading}
+            onClick={() => fetchProducts(pagination.page + 1, filters)}
           >
             Next
           </button>

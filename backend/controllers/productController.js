@@ -1,6 +1,5 @@
 ﻿import mongoose from "mongoose";
 import Product from "../models/Product.js";
-import StockTransaction from "../models/StockTransaction.js";
 import Supplier from "../models/Supplier.js";
 import { createStockTransaction } from "../services/stockService.js";
 import { generateSku, parsePagination, parseSort } from "../utils/helpers.js";
@@ -173,15 +172,26 @@ export async function updateProduct(req, res, next) {
       }
     }
 
-    if (updates.supplierId && !mongoose.Types.ObjectId.isValid(updates.supplierId)) {
-      return res.status(400).json({ message: "supplierId is invalid" });
+    if (updates.supplierId !== undefined && updates.supplierId !== null) {
+      if (!mongoose.Types.ObjectId.isValid(updates.supplierId)) {
+        return res.status(400).json({ message: "supplierId is invalid" });
+      }
+
+      const supplier = await Supplier.findOne({
+        _id: updates.supplierId,
+        userId: req.user.id,
+        isDeleted: false
+      });
+      if (!supplier) {
+        return res.status(400).json({ message: "supplierId is invalid" });
+      }
     }
 
     const product = await Product.findOneAndUpdate(
       { _id: req.params.id, userId: req.user.id, isDeleted: false },
       updates,
       { new: true, runValidators: true }
-    );
+    ).populate("supplierId", "name");
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
@@ -198,15 +208,17 @@ export async function updateProduct(req, res, next) {
 
 export async function softDeleteProduct(req, res, next) {
   try {
-    const product = await Product.findOneAndDelete({ _id: req.params.id, userId: req.user.id });
+    const product = await Product.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user.id, isDeleted: false },
+      { isDeleted: true },
+      { new: true }
+    );
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    await StockTransaction.deleteMany({ productId: product._id, userId: req.user.id });
-
-    res.json({ message: "Product permanently deleted" });
+    res.json({ message: "Product deleted" });
   } catch (err) {
     next(err);
   }

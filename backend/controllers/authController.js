@@ -1,10 +1,24 @@
-﻿import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
+import Inventory from "../models/Inventory.js";
+import Order from "../models/Order.js";
+import Product from "../models/Product.js";
+import Purchase from "../models/Purchase.js";
+import StockTransaction from "../models/StockTransaction.js";
+import Supplier from "../models/Supplier.js";
 import User from "../models/User.js";
 
 function generateToken(userId) {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
+}
+
+function normalizePhone(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function isValidPhone(phoneNormalized) {
+  return /^\d{10,15}$/.test(phoneNormalized);
 }
 
 function userPayload(user) {
@@ -12,6 +26,8 @@ function userPayload(user) {
     id: user._id,
     name: user.name,
     email: user.email,
+    company: user.company,
+    phone: user.phone,
     role: user.role,
     createdAt: user.createdAt
   };
@@ -19,10 +35,15 @@ function userPayload(user) {
 
 export async function registerUser(req, res, next) {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, company, phone, password } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "Name, email, and password are required" });
+    if (!name || !email || !company || !phone || !password) {
+      return res.status(400).json({ message: "Name, email, company, phone, and password are required" });
+    }
+
+    const phoneNormalized = normalizePhone(phone);
+    if (!isValidPhone(phoneNormalized)) {
+      return res.status(400).json({ message: "Phone number must contain 10 to 15 digits" });
     }
 
     const existing = await User.findOne({ email: email.toLowerCase() });
@@ -35,8 +56,10 @@ export async function registerUser(req, res, next) {
     const user = await User.create({
       name,
       email: email.toLowerCase(),
+      company,
+      phone,
       password: hashed,
-      role: role === "staff" ? "staff" : "admin"
+      role: "admin"
     });
 
     const token = generateToken(user._id);
@@ -60,12 +83,12 @@ export async function loginUser(req, res, next) {
 
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Incorrect password" });
     }
 
     const token = generateToken(user._id);
@@ -99,6 +122,7 @@ export async function forgotPassword(req, res, next) {
 
       const frontendBase = process.env.FRONTEND_URL || "http://localhost:5173";
       resetUrl = `${frontendBase}/reset-password/${resetToken}`;
+
       console.log(`Password reset link for ${user.email}: ${resetUrl}`);
     }
 
@@ -150,7 +174,7 @@ export async function resetPassword(req, res, next) {
 
 export async function getProfile(req, res, next) {
   try {
-    const user = await User.findById(req.user.id).select("_id name email role createdAt");
+    const user = await User.findById(req.user.id).select("_id name email company phone role createdAt");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -163,7 +187,7 @@ export async function getProfile(req, res, next) {
 
 export async function updateProfile(req, res, next) {
   try {
-    const { name, email, currentPassword, newPassword } = req.body;
+    const { name, email, company, phone, currentPassword, newPassword } = req.body;
 
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -180,6 +204,18 @@ export async function updateProfile(req, res, next) {
 
     if (name) {
       user.name = name;
+    }
+
+    if (company) {
+      user.company = company;
+    }
+
+    if (phone) {
+      const nextPhoneNormalized = normalizePhone(phone);
+      if (!isValidPhone(nextPhoneNormalized)) {
+        return res.status(400).json({ message: "Phone number must contain 10 to 15 digits" });
+      }
+      user.phone = phone;
     }
 
     if (newPassword) {
@@ -204,6 +240,42 @@ export async function updateProfile(req, res, next) {
       token,
       user: userPayload(user)
     });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function deleteAccount(req, res, next) {
+  try {
+    const { password } = req.body;
+
+    if (!password) {
+      return res.status(400).json({ message: "Password is required" });
+    }
+
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(401).json({ message: "Password is incorrect" });
+    }
+
+    const userId = user._id;
+
+    await Promise.all([
+      Inventory.deleteMany({ userId }),
+      Order.deleteMany({ userId }),
+      Product.deleteMany({ userId }),
+      Purchase.deleteMany({ userId }),
+      StockTransaction.deleteMany({ userId }),
+      Supplier.deleteMany({ userId }),
+      User.deleteOne({ _id: userId })
+    ]);
+
+    res.json({ message: "Account deleted successfully" });
   } catch (err) {
     next(err);
   }

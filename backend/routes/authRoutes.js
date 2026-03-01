@@ -6,7 +6,8 @@ import {
   forgotPassword,
   resetPassword,
   getProfile,
-  updateProfile
+  updateProfile,
+  deleteAccount
 } from "../controllers/authController.js";
 
 const router = express.Router();
@@ -17,5 +18,6 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
 router.get("/profile", protect, getProfile);
 router.put("/update-profile", protect, updateProfile);
+router.delete("/delete-account", protect, deleteAccount);
 
 export default router;
