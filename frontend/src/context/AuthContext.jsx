@@ -68,7 +68,9 @@ export function AuthProvider({ children }) {
   };
 
   const forgotPassword = async (payload) => {
-    const { data } = await api.post("/api/auth/forgot-password", payload);
+    const { data } = await api.post("/api/auth/forgot-password", payload, {
+      params: { includeResetUrl: "true" }
+    });
     return data;
   };
 

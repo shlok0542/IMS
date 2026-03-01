@@ -8,6 +8,7 @@ export default function ForgotPassword() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [resetUrl, setResetUrl] = useState("");
+  const [previewHint, setPreviewHint] = useState("");
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -16,6 +17,7 @@ export default function ForgotPassword() {
     setMessage("");
     setError("");
     setResetUrl("");
+    setPreviewHint("");
     setCopied(false);
     setLoading(true);
 
@@ -24,6 +26,8 @@ export default function ForgotPassword() {
       setMessage(data.message || "Reset link generated.");
       if (data.resetUrl) {
         setResetUrl(data.resetUrl);
+      } else if (data.resetLinkPreviewEnabled === false) {
+        setPreviewHint("Reset link preview is hidden in this environment. Set RETURN_RESET_URL=true on backend to show it.");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Failed to process request");
@@ -62,6 +66,7 @@ export default function ForgotPassword() {
 
           {message && <p className="text-sm text-emerald-600">{message}</p>}
           {error && <p className="text-sm text-red-600">{error}</p>}
+          {previewHint && <p className="text-sm text-amber-700">{previewHint}</p>}
 
           {resetUrl && (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-900">

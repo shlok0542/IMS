@@ -37,13 +37,15 @@ export async function registerUser(req, res, next) {
   try {
     const { name, email, company, phone, password } = req.body;
 
-    if (!name || !email || !company || !phone || !password) {
-      return res.status(400).json({ message: "Name, email, company, phone, and password are required" });
+    if (!name || !email || !company || !password) {
+      return res.status(400).json({ message: "Name, email, company, and password are required" });
     }
 
-    const phoneNormalized = normalizePhone(phone);
-    if (!isValidPhone(phoneNormalized)) {
-      return res.status(400).json({ message: "Phone number must contain 10 to 15 digits" });
+    if (phone) {
+      const phoneNormalized = normalizePhone(phone);
+      if (!isValidPhone(phoneNormalized)) {
+        return res.status(400).json({ message: "Phone number must contain 10 to 15 digits" });
+      }
     }
 
     const existing = await User.findOne({ email: email.toLowerCase() });
@@ -57,7 +59,7 @@ export async function registerUser(req, res, next) {
       name,
       email: email.toLowerCase(),
       company,
-      phone,
+      phone: phone || undefined,
       password: hashed,
       role: "admin"
     });
@@ -126,12 +128,17 @@ export async function forgotPassword(req, res, next) {
       console.log(`Password reset link for ${user.email}: ${resetUrl}`);
     }
 
+    const requestOrigin = String(req.get("origin") || "");
+    const isLocalRequest =
+      requestOrigin.includes("localhost") ||
+      requestOrigin.includes("127.0.0.1");
     const includeResetUrl =
       process.env.RETURN_RESET_URL === "true" ||
-      (process.env.NODE_ENV !== "production" && !!resetUrl);
+      (isLocalRequest && String(req.query.includeResetUrl || "").toLowerCase() === "true");
 
     res.json({
       message: "If this email exists, a reset link has been generated.",
+      resetLinkPreviewEnabled: includeResetUrl,
       ...(includeResetUrl ? { resetUrl } : {})
     });
   } catch (err) {
