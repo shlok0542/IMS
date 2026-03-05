@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import logo from "../..//dist/logo.png"
 
 function navClass({ isActive }) {
   return isActive
@@ -67,7 +68,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4">
         <Link to={homePath} className="text-lg font-bold text-ink dark:text-slate-100">
-          CommerceStock
+          <img src={logo} alt="logo" className="h-25 w-40" />
         </Link>
         <button
           className="btn btn-secondary md:hidden"
